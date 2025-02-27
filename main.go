@@ -52,6 +52,27 @@ func main() {
 	outputData(userNote)
 }
 
+func printSomething(value interface{}) {
+	typedValue, ok := value.(int)
+
+	if !ok {
+		fmt.Printf("typed val:", typedValue)
+	}
+	// switch value.(type) {
+	// case int:
+	// 	fmt.Println("Integer:", value)
+	// case float64:
+	// 	fmt.Println("Float:", value)
+	// case string:
+	// 	fmt.Println("String:", value)
+	// }
+}
+
+// generics
+func add[T int | float64 | string](a, b T) T {
+	return a + b
+}
+
 func outputData(data outputtable) error {
 	data.Display()
 	return saveData(data)
